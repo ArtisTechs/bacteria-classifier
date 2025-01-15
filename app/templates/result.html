@@ -1,0 +1,20 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bacteria Classifier - Result</title>
+</head>
+
+<body>
+    <h1>Bacteria Classification Result</h1>
+    <p>Predicted Class: {{ prediction }}</p>
+    <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="Uploaded Image"
+        style="width: 300px;">
+    <br><br>
+    <a href="/">Go Back</a>
+</body>
+
+</html>

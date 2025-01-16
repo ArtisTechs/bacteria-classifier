@@ -1,20 +1,33 @@
-<!-- result.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacteria Classifier - Result</title>
+    <title>Bacteria Classifier - {{ title }}</title>
+    <link rel="stylesheet" href="../static/css/result-styles.css">
 </head>
 
 <body>
-    <h1>Bacteria Classification Result</h1>
-    <p>Predicted Class: {{ prediction }}</p>
-    <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="Uploaded Image"
-        style="width: 300px;">
-    <br><br>
-    <a href="/">Go Back</a>
+    <div class="main-logo">
+        <img src="../static/assets/logo.png" alt="main-logo">
+    </div>
+    <div class="upload-image-container">
+        <!-- Go Back button with arrow -->
+        <a href="/" class="go-back-button">
+            <span class="arrow">&larr;</span> Go Back
+        </a>
+        <img src="../static/uploads/{{ filename }}" alt="Uploaded Image" style="width: 100%;">
+        <br><br>
+    </div>
+    <div class="description-container">
+        <h2>Bacteria Classification Result</h2>
+        <h1>{{ title }}</h1>
+        <p><strong>Safety Status:</strong> {{ safety }}</p>
+        <p><strong>Description:</strong> {{ description }}</p>
+        <p><strong>Predicted Class Probability:</strong> {% if probability != 'N/A' %}{{ probability * 100 | round(2)
+            }}%{% else %}N/A{% endif %}</p>
+    </div>
 </body>
 
 </html>

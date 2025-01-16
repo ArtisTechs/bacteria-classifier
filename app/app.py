@@ -18,12 +18,20 @@ def upload_and_classify():
 
     file = request.files['file']
     if file:
+        filename = file.filename
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filepath)
 
-        # Classify the image and get the predicted class name
-        prediction = classify_image(filepath)
-        return render_template('result.html', prediction=prediction, image_path=filepath)
+        # Classify the image and get the predicted title, description, safety, and probability
+        title, description, safety, probability = classify_image(filepath)
+
+        # Render the result page with these details
+        return render_template('result.html', 
+                               title=title, 
+                               description=description, 
+                               safety=safety, 
+                               probability=probability, 
+                               filename = file.filename)
 
     return "Error processing the image.", 500
 

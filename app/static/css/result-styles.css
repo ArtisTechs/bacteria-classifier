@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d2c1da;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.main-logo {
+    position: fixed;
+    left: 50%;
+    top: 1rem
+}
+
+.main-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.description-container {
+  background-color: #100429;
+  color: white;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.upload-image-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.go-back-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #100429; /* Green background */
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.go-back-button:hover {
+  background-color: #452983; /* Darker green on hover */
+}
+
+.arrow {
+  margin-right: 8px;
+  font-size: 18px;
+}

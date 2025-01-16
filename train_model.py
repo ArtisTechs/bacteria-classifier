@@ -11,7 +11,7 @@ base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
 x = Dense(128, activation='relu')(x)
-predictions = Dense(5, activation='softmax')(x)  # Set this to 5 if you have 5 classes
+predictions = Dense(11, activation='softmax')(x)  # Set this to 5 if you have 5 classes
 model = Model(inputs=base_model.input, outputs=predictions)
 
 # Freeze base layers

@@ -7,8 +7,9 @@ MODEL_PATH = 'models/bacteria_classifier.h5'
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Load class labels (adjust based on your dataset)
-CLASS_LABELS = ['Clostridium_Perfringens', 'Corynebacterium_Glutamicum', 'Paramecium_Plain_W.M', 
-                'Pseudomonas_Aerogenosa', 'Vibrio_Comma']  # Update these with your actual class names
+CLASS_LABELS = ['Bacillus_Subtilis','Clostridium_Perfringens','Corynebacterium_Glutamicum','E_Coli','Mycobacterium_Tuberculosis_Smear', 'Neisseria_Gonorrheae_Smear', 
+                'Paramecium_Plain_W.M', 'Pseudomonas_Aerogenosa', 'Salmonella_Typhosa', 
+                'Streptococcus', 'Vibrio_Comma']  # Update these with your actual class names
 
 # Define a confidence threshold (e.g., 0.6 = 60%)
 CONFIDENCE_THRESHOLD = 0.6

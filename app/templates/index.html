@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bacteria Classifier</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
+
 <body>
-    <h1>Bacteria Classifier</h1>
-    <form action="/classify" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <button type="submit">Classify</button>
-    </form>
+    <div class="main-logo">
+        <img src="../static/assets/logo.png" alt="main-logo">
+    </div>
+
+    <div class="description-container">
+        <p>Upload an image of bacteria by dragging and dropping it into the designated area or using the browse button.
+            The app will automatically classify the image into one of several bacteria categories.</p>
+    </div>
+
+    <div class="upload-container">
+        <form action="/classify" method="post" enctype="multipart/form-data" id="upload-form">
+            <div class="drag-and-drop" id="drop-zone">
+                <p id="drop-text">Drag & Drop your image here, or <span class="browse">browse</span></p>
+                <input type="file" name="file" accept="image/*" id="file-input" hidden>
+                <span class="clear-btn" id="clear-btn" hidden>&times;</span>
+            </div>
+            <button type="submit">Classify</button>
+        </form>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" hidden>
+        <div class="loading-message">
+            <p>Analyzing...</p>
+        </div>
+    </div>
+
+    <script src="../static/js/scripts.js"></script>
 </body>
+
 </html>

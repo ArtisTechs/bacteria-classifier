@@ -1,0 +1,117 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d2c1da;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-logo img {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+
+h1 {
+  color: #333;
+  margin-top: 50px;
+}
+
+.description-container {
+  width: 50%;
+  color: #100429;
+  font-weight: bold;
+}
+
+.upload-container {
+  display: inline-block;
+  width: 50%;
+  margin-top: 1rem;
+}
+
+.drag-and-drop {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.drag-and-drop.dragging {
+  background-color: #e9ecef;
+  border-color: #007bff;
+}
+
+.drag-and-drop p {
+  margin: 0;
+  color: #666;
+}
+
+.drag-and-drop .browse {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #100429;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #452983;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+.clear-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  display: block;
+}
+
+.clear-btn:hover {
+  color: #ff0000;
+}
+
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;  /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-message {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}

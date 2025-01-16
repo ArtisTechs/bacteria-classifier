@@ -2,3 +2,7 @@ pip freeze > requirements.txt
 pip install flask tensorflow opencv-python numpy pillow matplotlib
 pip install flask
 pip install tensorflow
+
+#run
+python train_model.py 
+ python app/app.py 

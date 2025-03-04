@@ -2,6 +2,11 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from flask import Flask, render_template
+from PIL import Image
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG)
 
 # Load your model
 MODEL_PATH = 'models/bacteria_classifier.h5'
@@ -58,28 +63,32 @@ def classify(image_path):
                            image_path=image_path)
 
 def classify_image(image_path):
-    # Load the image and preprocess it
-    img = image.load_img(image_path, target_size=(224, 224))
-    img_array = image.img_to_array(img)
-    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
-    img_array /= 255.0  # Rescale the image
+    try:
+        # Load the image and preprocess it
+        img = tf.keras.utils.load_img(image_path, target_size=(224, 224))
+        img_array = image.img_to_array(img)
+        img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+        img_array /= 255.0  # Rescale the image
 
-    # Get model prediction
-    predictions = model.predict(img_array)
+        # Get model prediction
+        predictions = model.predict(img_array)
 
-    # Get the highest predicted class and its probability
-    predicted_class_index = np.argmax(predictions, axis=1)[0]
-    predicted_class_probability = np.max(predictions)
+        # Get the highest predicted class and its probability
+        predicted_class_index = np.argmax(predictions, axis=1)[0]
+        predicted_class_probability = np.max(predictions)
 
-    # If the model's confidence is below the threshold, classify it as "Unrecognized"
-    if predicted_class_probability < CONFIDENCE_THRESHOLD:
-        return "Unrecognized", "The model could not confidently classify the image.", "N/A", "N/A"
+        # If the model's confidence is below the threshold, classify it as "Unrecognized"
+        if predicted_class_probability < CONFIDENCE_THRESHOLD:
+            return "Unrecognized", "The model could not confidently classify the image.", "N/A", "N/A"
 
-    # Return the class title, description, safety, and probability
-    class_title = CLASS_TITLES[predicted_class_index]
-    class_description = CLASS_DESCRIPTIONS[predicted_class_index]
-    class_safety = CLASS_SAFETY[predicted_class_index]
-    return class_title, class_description, class_safety, predicted_class_probability
+        # Return the class title, description, safety, and probability
+        class_title = CLASS_TITLES[predicted_class_index]
+        class_description = CLASS_DESCRIPTIONS[predicted_class_index]
+        class_safety = CLASS_SAFETY[predicted_class_index]
+        return class_title, class_description, class_safety, predicted_class_probability
+    except Exception as e:
+        logging.error(f"Error classifying image: {e}")
+        return "Error", "An error occurred while processing the image.", "N/A", "N/A"
 
 if __name__ == '__main__':
     app.run(debug=True)

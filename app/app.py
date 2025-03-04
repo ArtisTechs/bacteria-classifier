@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, send_from_directory
 import os
-from classify import classify_image
+from app.classify import classify_image
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'app/static/uploads'

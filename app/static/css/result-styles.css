@@ -5,16 +5,18 @@ body {
   padding: 0;
   text-align: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 100vh;
 }
 
 .main-logo {
-  position: fixed;
-  left: 50%;
-  top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .main-logo img {
@@ -26,12 +28,20 @@ body {
 .description-container {
   background-color: #100429;
   color: white;
-  height: 400px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   width: 40%;
   padding: 1rem;
   border-radius: 1rem;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
 }
 
 .upload-image-container {
@@ -70,34 +80,18 @@ body {
 }
 
 @media (max-width: 999px) {
-  body {
+  .main-content {
+    display: flex;
     flex-direction: column;
   }
 
-  .description-container {
-    height: 450px;
-    width: 50%;
-  }
-
   .upload-image-container {
-    margin-top: 10rem;
+    width: 90%;
+    margin: 0;
   }
 
-  .main-logo {
-    position: fixed;
-    left: 45%;
-    top: 1rem;
-  }
-}
-
-@media (max-width: 700px) {
   .description-container {
-    height: 500px;
-    width: 70%;
-  }
-
-  .upload-image-container {
-    margin-top: 10rem;
-    width: 70%;
+    width: 80%;
+    margin-bottom: 3rem;
   }
 }

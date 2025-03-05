@@ -14,23 +14,45 @@
     </div>
 
     <div class="description-container">
-        <p>Upload an image of bacteria by dragging and dropping it into the designated area or using the browse button.
-            The app will automatically classify the image into one of several bacteria categories.</p>
+        <p>Upload an image of bacteria by choosing one of the options below. The app will automatically classify the
+            image into one of several bacteria categories.</p>
     </div>
 
-    <div class="upload-container">
+    <!-- Choice Screen -->
+    <div class="choice-container" id="choice-container">
+        <button class="primary-button" id="choose-file-upload">File Upload</button>
+        <button class="primary-button" id="choose-camera">Use Camera</button>
+    </div>
+
+    <!-- File Upload Interface (Hidden by Default) -->
+    <div class="upload-container" id="file-upload-container" hidden>
         <form action="/classify" method="post" enctype="multipart/form-data" id="upload-form">
             <div class="drag-and-drop" id="drop-zone">
                 <p id="drop-text">Drag & Drop your image here, or <span class="browse">browse</span></p>
                 <input type="file" name="file" accept="image/*" id="file-input" hidden>
                 <span class="clear-btn" id="clear-btn" hidden>&times;</span>
             </div>
-            <button type="submit">Classify</button>
+            <button class="default-button" type="button" id="cancel-file-upload">Cancel</button>
+            <button class="primary-button" type="submit">Classify</button>
+        </form>
+    </div>
+
+    <!-- Camera Interface (Hidden by Default) -->
+    <div class="camera-container" id="camera-container" hidden>
+        <div id="camera-modal">
+            <div class="modal-content">
+                <video id="camera-feed" autoplay></video>
+            </div>
+        </div>
+        <form action="/classify" method="post" enctype="multipart/form-data" id="camera-form">
+            <input type="hidden" name="file" id="camera-file-input">
+            <button class="default-button" type="button" id="close-camera-btn">Cancel</button>
+            <button class="primary-button" type="button" id="capture-btn">Capture</button>
         </form>
     </div>
 
     <!-- Loading Overlay -->
-    <div id="loading-overlay" hidden>
+    <div class="loading-overlay" id="loading-overlay" hidden>
         <div class="loading-message">
             <p>Analyzing...</p>
         </div>

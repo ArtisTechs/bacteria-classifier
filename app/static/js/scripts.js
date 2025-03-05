@@ -107,7 +107,9 @@ function startCamera() {
   }
 
   navigator.mediaDevices
-    .getUserMedia({ video: true })
+    .getUserMedia({
+      video: { facingMode: { ideal: "environment" } },
+    })
     .then((stream) => {
       cameraFeed.srcObject = stream;
     })
